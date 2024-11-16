@@ -1,0 +1,72 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django-specific
+*.log
+*.pot
+*.pyc
+*.pyo
+db.sqlite3
+media/
+
+# Django migrations
+*/migrations/
+*/migrations/*.py
+*/migrations/*.pyc
+
+# Environment variables
+.env
+.env.*
+
+# Docker
+*.swp
+.dockerignore
+Dockerfile
+docker-compose.override.yml
+*.tar
+
+# Celery and Redis
+celerybeat-schedule
+*.pid
+
+# PostgreSQL
+*.pgdata/
+postgres_data/
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Visual Studio Code
+.vscode/
+
+# Pytest
+.pytest_cache/
+.cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+
+# IDEs
+.idea/
+*.iml
+
+# Static files
+staticfiles/
+static/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Compiled files
+*.so
+
+# Backup files
+*.bak
+*.swp

@@ -1,0 +1,46 @@
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: library_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_INITDB_ARGS: "--auth=trust"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6
+    ports:
+      - "6380:6380"
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+
+  celery:
+    build: .
+    command: celery -A library_management worker -l info
+    depends_on:
+      - db
+      - redis
+
+  celery-beat:
+    build:
+      context: .
+    command: celery -A library_management beat --scheduler django_celery_beat.schedulers.DatabaseScheduler
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - db
+
+volumes:
+  postgres_data:
