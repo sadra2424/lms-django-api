@@ -114,7 +114,7 @@ This project is a fully-featured Library Management System built with Django and
 
 Run tests using:
 ```bash
-docker-compose exec web pytest
+docker-compose exec web path/to/your/pytest
 ```
 
 To run specific test files or folders:
